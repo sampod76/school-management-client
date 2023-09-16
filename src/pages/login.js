@@ -14,24 +14,18 @@ const Login = () => {
   const { setUser, Error_model } = useContext(AuthContext);
   const router = useRouter();
   const [loginUser, { isLoading, isError, error }] = useLoginUserMutation();
-
+  
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     const userId = e.target.userId.value;
     const password = e.target.password.value;
-    if (userId === "admin" && password === "admin") {
+    setTimeout(() => {
       Success_model({ message: "login successfull" });
       setUser((c) => ({ ...c, role: ENUM_USER_ROLE.SUPER_ADMIN }));
       localStorage.setItem("role", JSON.stringify(ENUM_USER_ROLE.SUPER_ADMIN));
       router.push("/supper-admin/dashboard");
-    } else {
-      Error_model({
-        message: "ইউজার আইডি অথবা পাসওয়ার্ড ভুল হচ্ছে !!",
-      });
-    }
-
-    /*    
-    // ! real login 
+    }, 1000);
+    /*    //! real login 
  // rtk-query method by bayajid
     loginUser({ userId, password })
       .then((result) => {

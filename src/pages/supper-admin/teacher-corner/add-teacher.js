@@ -162,7 +162,11 @@ const AddTeacherPage = () => {
             form.resetFields();
           } else {
             console.log(result);
-            Error_model({message: result?.error?.data?.message || "কোন কিছু ভুল হচ্ছে দয়া করে আবার যাচাই করুন!!",error: result,});}
+            Error_model({
+              message: result?.error?.data?.message || "failed to create",
+              error: result,
+            });
+          }
         })
         .catch((error) => {
           console.log(error);

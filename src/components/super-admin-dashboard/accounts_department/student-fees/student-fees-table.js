@@ -1,5 +1,3 @@
-import { ENUM_STATUS } from "@/const/userConstant";
-import englishDataToBangle from "@/utils/englishDataToBangle";
 import { confirm_modal } from "@/utils/modalHook";
 import { Dropdown, Menu, Space, Table } from "antd";
 import Link from "next/link";
@@ -8,69 +6,65 @@ const data = [
   {
     key: 0,
     serial: 1,
-    invoice_no: "I" + "-" + 210411,
-    student_id: "S" + "-" + 210411,
-    // student_id: "শিক্ষার্থী আইডি",
-    student_name: "হাসান",
-    phone: "015741100542",
-    fee_type: "মাসিক বেতন",
-    amount: "300",
-    status: ENUM_STATUS.ACTIVE,
-    date: englishDataToBangle(new Date(Date.now()).toLocaleDateString()),
+    invoice_no: "ইনভয়েস নং",
+    student_id: "শিক্ষার্থী আইডি",
+    student_name: "শিক্ষার্থীর নাম",
+    phone: "মোবাইল",
+    fee_type: "ফি টাইপ",
+    amount: "এমাউন্ট",
+    status: "স্ট্যাটাস",
+    date: "তারিখ",
   },
   {
     key: 1,
     serial: 2,
-    invoice_no: "I" + "-" + 210411,
-    student_id: "S" + "-" + 210411,
-    // student_id: "শিক্ষার্থী আইডি",
-    student_name: "কামাল ",
-    phone: "015741100542",
-    fee_type: "মাসিক বেতন",
-    amount: "3600",
-    status: ENUM_STATUS.ACTIVE,
-    date: englishDataToBangle(new Date(Date.now()).toLocaleDateString()),
+    invoice_no: "ইনভয়েস নং",
+    student_id: "শিক্ষার্থী আইডি",
+    student_name: "শিক্ষার্থীর নাম",
+    phone: "মোবাইল",
+    fee_type: "ফি টাইপ",
+    amount: "এমাউন্ট",
+    status: "স্ট্যাটাস",
+    date: "তারিখ",
   },
   {
     key: 2,
     serial: 3,
-    invoice_no: "I" + "-" + 210411,
-    student_id: "S" + "-" + 210411,
-    // student_id: "শিক্ষার্থী আইডি",
-    student_name: "জামাল",
-    phone: "015741100542",
-    fee_type: "মাসিক বেতন",
-    amount: "200",
-    status: ENUM_STATUS.ACTIVE,
-    date: englishDataToBangle(new Date(Date.now()).toLocaleDateString()),
+    invoice_no: "ইনভয়েস নং",
+    student_id: "শিক্ষার্থী আইডি",
+    student_name: "শিক্ষার্থীর নাম",
+    phone: "মোবাইল",
+    fee_type: "ফি টাইপ",
+    amount: "এমাউন্ট",
+    status: "স্ট্যাটাস",
+    date: "তারিখ",
   },
   {
     key: 3,
     serial: 4,
-    invoice_no: "I" + "-" + 210411,
-    student_id: "S" + "-" + 210411,
-    // student_id: "শিক্ষার্থী আইডি",
-    student_name: "করিম ",
-    phone: "015741100542",
-    fee_type: "মাসিক বেতন",
-    amount: "300",
-    status: ENUM_STATUS.ACTIVE,
-    date: englishDataToBangle(new Date(Date.now()).toLocaleDateString()),
+    invoice_no: "ইনভয়েস নং",
+    student_id: "শিক্ষার্থী আইডি",
+    student_name: "শিক্ষার্থীর নাম",
+    phone: "মোবাইল",
+    fee_type: "ফি টাইপ",
+    amount: "এমাউন্ট",
+    status: "স্ট্যাটাস",
+    date: "তারিখ",
   },
   {
     key: 4,
     serial: 5,
-    invoice_no: "I" + "-" + 210411,
-    student_id: "S" + "-" + 210411,
-    // student_id: "শিক্ষার্থী আইডি",
-    student_name: "রহিম ",
-    phone: "015741100542",
-    fee_type: "মাসিক বেতন",
-    amount: "500",
-    status: ENUM_STATUS.ACTIVE,
-    date: englishDataToBangle(new Date(Date.now()).toLocaleDateString()),
+    invoice_no: "ইনভয়েস নং",
+    student_id: "শিক্ষার্থী আইডি",
+    student_name: "শিক্ষার্থীর নাম",
+    phone: "মোবাইল",
+    fee_type: "ফি টাইপ",
+    amount: "এমাউন্ট",
+    status: "স্ট্যাটাস",
+    date: "তারিখ",
   },
 ];
+
 const items = [
   {
     key: "1",
@@ -88,7 +82,7 @@ const items = [
 
 const StudentFeesTable = () => {
   const handleDelete = () => {
-    confirm_modal("You want to delete Category!");
+   confirm_modal("You want to delete Category!") 
   };
 
   return (

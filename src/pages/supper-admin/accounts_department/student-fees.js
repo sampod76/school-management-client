@@ -54,8 +54,8 @@ const Student_Fees = () => {
 
   const [value, setValue] = useState();
   const onChange = (e) => {
-    // console.log("radio checked", e.target.value);
-    // setValue(e.target.value);
+    console.log("radio checked", e.target.value);
+    setValue(e.target.value);
   };
 
   const handleFilterClick = () => {
@@ -89,7 +89,7 @@ const Student_Fees = () => {
             <Col xs={24} sm={12}>
               <Form.Item
                 label="শিক্ষার্থীর আইডি;  "
-                name="studentId"
+                name="incomeMethod"
                 rules={[{ required: true, message: "শিক্ষার্থীর আইডি" }]}
               >
                 <Input />
@@ -107,7 +107,7 @@ const Student_Fees = () => {
                   style={{
                     width: "100%",
                   }}
-                  // onChange={onChange}
+                  onChange={onChange}
                 >
                   <Row gutter={16}>
                     <Col span={8}>
@@ -126,7 +126,7 @@ const Student_Fees = () => {
                       <Checkbox value="E">E</Checkbox>
                     </Col>
                     <Col span={8}>
-                      <Checkbox value="F">F</Checkbox>
+                      <Checkbox value="E">F</Checkbox>
                     </Col>
                   </Row>
                 </Checkbox.Group>
@@ -174,14 +174,14 @@ const Student_Fees = () => {
           </Row>
           <Row>
             <Col>
-              <Form.Item label="পেমেন্ট গেটওয়ে" name="payment_gateway">
+              <Form.Item label="পেমেন্ট গেটওয়ে" name="name">
                 <Radio.Group onChange={onChange} value={value}>
                   <Space direction="vertical">
-                    <Radio value={1} >
+                    <Radio value={1} setValue={1}>
                       {" "}
                       অনলাইন পেমেন্ট
                     </Radio>
-                    <Radio value={2} >
+                    <Radio value={2} setValue={2}>
                       {" "}
                       অফলাইন পেমেন্ট
                     </Radio>

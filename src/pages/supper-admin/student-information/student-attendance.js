@@ -16,6 +16,7 @@ import {
 import { confirm_modal } from "@/utils/modalHook";
 
 import Link from "next/link";
+import { useGetStudentAttendancesQuery } from "@/redux/features/studensAttendance/studensAttendanceApi";
 const { Search } = Input;
 const StudentAttendance = () => {
   // state for filter
@@ -39,30 +40,77 @@ const StudentAttendance = () => {
   const handleFilterReset = () => {};
   const onSearch = (value) => console.log(value);
 
+  const { data: studentAttendanceData, isLoading: studentAttendanceLoading } =
+    useGetStudentAttendancesQuery();
+
+  // processDate
+  // Your input date string
+  const inputDateString = studentAttendanceData?.data[0].date;
+  // Split the date string at the "T" character
+  const parts = inputDateString.split("T");
+  // Get the left side (before the "T")
+  const processedDate = parts[0];
+
+
+  // Assuming you have data from different sources
+  const studentData = studentAttendanceData?.data[0].students;
+
+  // Combine data from different sources
+  const combinedData = studentData.map((student, index) => ({
+    ...student,
+    date: processedDate,
+    class: studentAttendanceData?.data[0].classInfo.name,
+  }));
+
+
+  
   const columns = [
-    { title: "শিক্ষার্থী আইডি", dataIndex: "studentId", key: "studentId" },
-    { title: "শিক্ষার্থী নাম", dataIndex: "studentName", key: "studentName" },
-    { title: "শ্রেণী", dataIndex: "class", key: "class" },
-    { title: "শাখা", dataIndex: "branch", key: "branch" },
+    { title: "শিক্ষার্থী আইডি", dataIndex: "student_userId", key: "studentId" },
+    {
+      title: "শিক্ষার্থী নাম",
+      dataIndex: "student.student.name_bangla",
+      key: "studentName",
+    },
+    {
+      title: "শ্রেণী",
+      dataIndex: "class",
+      key: "class",
+    },
+    {
+      title: "শাখা",
+      dataIndex: "branch",
+      key: "branch",
+      render: (exitTime) => {
+        // Check if exitTime is defined, if not, use a default value
+        return exitTime ? exitTime : "খুঁজে পাওয়া যায়নি";
+      },
+    },
     { title: "তারিখ", dataIndex: "date", key: "date" },
-    { title: "প্রবেশ সময়", dataIndex: "entryTime", key: "entryTime" },
-    { title: "বের হওয়ার সময়", dataIndex: "exitTime", key: "exitTime" },
+    {
+      title: "প্রবেশ সময়",
+      dataIndex: "entryTime",
+      key: "entryTime",
+      render: (exitTime) => {
+        // Check if exitTime is defined, if not, use a default value
+        return exitTime ? exitTime : "খুঁজে পাওয়া যায়নি";
+      },
+    },
+    {
+      title: "বের হওয়ার সময়",
+      dataIndex: "exitTime",
+      key: "exitTime",
+      render: (exitTime) => {
+        // Check if exitTime is defined, if not, use a default value
+        return exitTime ? exitTime : "খুঁজে পাওয়া যায়নি";
+      },
+    },
+
     {
       title: "স্ট্যাটাস",
-      dataIndex: "status",
+      dataIndex: "attendance",
       key: "status",
       render: (status) => (
-        <Tag
-          color={
-            status === "উপস্থিত"
-              ? "green"
-              : status === "বিলম্ব"
-              ? "orange"
-              : "red"
-          }
-        >
-          {status}
-        </Tag>
+        <Tag color={status === "হ্যাঁ" ? "green" : "red"}>{status}</Tag>
       ),
     },
     {
@@ -83,14 +131,14 @@ const StudentAttendance = () => {
                 >
                   ট্র্যাশে সরান
                 </Menu.Item>
-                <Menu.Item
+                {/* <Menu.Item
                   key="edit"
                   onClick={() => {
                     handleDelete();
                   }}
                 >
                   ডাটা মুছুন
-                </Menu.Item>
+                </Menu.Item> */}
               </Menu>
             }
           >
@@ -101,95 +149,14 @@ const StudentAttendance = () => {
     },
   ];
 
-  const attendanceData = [
-    {
-      studentId: "101",
-      studentName: "আমিনুল ইসলাম",
-      class: "১০",
-      branch: "বিজ্ঞান",
-      date: "2023-08-15",
-      entryTime: "09:00 AM",
-      exitTime: "02:00 PM",
-      status: "উপস্থিত",
-    },
-    {
-      studentId: "102",
-      studentName: "মেহেরেন আক্তার",
-      class: "৯",
-      branch: "বিজ্ঞান",
-      date: "2023-08-15",
-      entryTime: "09:30 AM",
-      exitTime: "03:30 PM",
-      status: "বিলম্ব",
-    },
-    {
-      studentId: "103",
-      studentName: "রহিম খান",
-      class: "১১",
-      branch: "কমার্স",
-      date: "2023-08-15",
-      entryTime: "10:00 AM",
-      exitTime: "04:00 PM",
-      status: "উপস্থিত",
-    },
-    {
-      studentId: "104",
-      studentName: "জাহিদ হোসেন",
-      class: "১২",
-      branch: "মানবিক",
-      date: "2023-08-15",
-      entryTime: "09:45 AM",
-      exitTime: "02:45 PM",
-      status: "উপস্থিত",
-    },
-    {
-      studentId: "105",
-      studentName: "ফারিদা খাতুন",
-      class: "১০",
-      branch: "বিজ্ঞান",
-      date: "2023-08-16",
-      entryTime: "08:30 AM",
-      exitTime: "01:30 PM",
-      status: "অনুউপস্থিত",
-    },
-    {
-      studentId: "106",
-      studentName: "সামির আহমেদ",
-      class: "৯",
-      branch: "বিজ্ঞান",
-      date: "2023-08-16",
-      entryTime: "10:15 AM",
-      exitTime: "03:15 PM",
-      status: "বিলম্ব",
-    },
-    {
-      studentId: "107",
-      studentName: "মেহনাজ তাসনীম",
-      class: "১১",
-      branch: "কমার্স",
-      date: "2023-08-17",
-      entryTime: "09:00 AM",
-      exitTime: "02:00 PM",
-      status: "উপস্থিত",
-    },
-    {
-      studentId: "108",
-      studentName: "কামরুজ্জামান শেখ",
-      class: "১২",
-      branch: "মানবিক",
-      date: "2023-08-17",
-      entryTime: "10:30 AM",
-      exitTime: "03:30 PM",
-      status: "উপস্থিত",
-    },
-  ];
-
   return (
     <div className="bg-white rounded-lg shadow p-6">
       <div className="flex justify-between items-center">
         <h2 className="text-xl font-semibold mb-4">শিক্ষার্থীদের হাজিরা</h2>
         <Button type="primary">
-          <Link href={"/supper-admin/student-information/student-add-attendance"}>
+          <Link
+            href={"/supper-admin/student-information/student-add-attendance"}
+          >
             + নতুন হাজিরা
           </Link>
         </Button>
@@ -285,18 +252,14 @@ const StudentAttendance = () => {
       </section>
 
       <div style={{ overflowY: "auto" }}>
-        <Table
-          columns={columns}
-          dataSource={attendanceData}
-          pagination={false}
-        />
+        <Table columns={columns} dataSource={combinedData} pagination={false} />
       </div>
       <div className="mt-4 flex justify-center">
         <Pagination
           defaultPageSize={20} // Number of items per page
           showSizeChanger
           showQuickJumper
-          total={attendanceData.length}
+          total={studentAttendanceData?.data.length}
         />
       </div>
     </div>
