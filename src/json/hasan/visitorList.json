@@ -1,0 +1,28 @@
+{
+  "visitorList": [
+    {
+      "purpose": "Meeting",
+      "meetingWith": "Hasan",
+      "vistingPersonDesignation": "Student",
+      "visitorName": "Rakib",
+      "phoneNumber": "031321364654",
+      "idCardNumber": "123456",
+      "numberOfPerson": 4,
+      "visitingDate": "07/18/2023",
+      "inTime": "12:58 PM",
+      "outTime": "12:58 PM"
+    },
+    {
+      "purpose": "Meeting",
+      "meetingWith": "Hasan",
+      "vistingPersonDesignation": "Student",
+      "visitorName": "Rakib",
+      "phoneNumber": "031321364654",
+      "idCardNumber": "123456",
+      "numberOfPerson": 4,
+      "visitingDate": "07/18/2023",
+      "inTime": "12:58 PM",
+      "outTime": "12:58 PM"
+    }
+  ]
+}

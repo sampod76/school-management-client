@@ -1,0 +1,20 @@
+.firstDiv {
+  background-color: #ab00c1;
+  height: 20%;
+}
+.secondDiv {
+  background-color: #2c8b09;
+  height: 100%;
+  text-align: center;
+}
+
+.btn {
+  color: white;
+  background-color: "#E3342F";
+  width: 20%;
+  height: 80px;
+}
+
+.nav_menu_color {
+  color: white;
+}

@@ -1,0 +1,106 @@
+{
+  "userId": "454",
+  "password": "154sdf14sd",
+  "teacher_info": {
+    "name_bangla": "আপনার নাম",
+    "name_english": "Your Name",
+    "birth_registration_number": "Your Birth Registration Number",
+    "date_of_birth": "Your Birth Date",
+    "birth_district": "Your District",
+    "gender": "পুরুষ",
+    "nationality": "Your Nationality",
+    "religion": "ইসলাম",
+    "subject": ["বাংলা", "গণিত"],
+    "marital_status": "অবিবাহিত",
+    "blood_group": "A+",
+    "photo": "শিক্ষার্থীর ছবি (পাসপোর্ট সাইজের ছবি)",
+    "minority_ethnicity": "না",
+    "opinion": "শিক্ষার্থীর মতামত"
+  },
+  "mother_info": {
+    "name_bangla": "মাতার নাম",
+    "name_english": "Mother's Name",
+    "nid": "Mother's NID",
+    "date_of_birth": "Mother's Birth Date",
+    "birth_registration": "Mother's Birth Registration",
+    "phone_number": "Mother's Phone Number",
+    "profession": "Mother's Profession",
+    "year_of_death": ""
+  },
+  "father_info": {
+    "name_bangla": "পিতার নাম",
+    "name_english": "Father's Name",
+    "nid": "Father's NID",
+    "date_of_birth": "Father's Birth Date",
+    "birth_registration": "Father's Birth Registration",
+    "phone_number": "Father's Phone Number",
+    "profession": "Father's Profession",
+    "year_of_death": ""
+  },
+
+  "current_address": {
+    "division": "বিভাগ",
+    "district": "জেলা",
+    "sub_district": "উপজেলা/থানা",
+    "union": "ইউনিয়ন",
+    "ward_number": "ওয়ার্ড নম্বর",
+    "mouza": "মৌজা",
+    "village": "গ্রাম/মহল্লা/রাস্তার নাম ও নম্বর",
+    "house_house_holding_number": "বাসার হোল্ডিং নম্বর",
+    "post_office": "ডাকঘর",
+    "postal_code": "পোস্ট কোড"
+  },
+  "permanent_address": {
+    "division": "বিভাগ",
+    "district": "জেলা",
+    "sub_district": "উপজেলা/থানা",
+    "union": "ইউনিয়ন",
+    "ward_number": "ওয়ার্ড নম্বর",
+    "mouza": "মৌজা",
+    "village": "গ্রাম/মহল্লা/রাস্তার নাম ও নম্বর",
+    "house_house_holding_number": "বাসার হোল্ডিং নম্বর",
+    "post_office": "ডাকঘর",
+    "postal_code": "পোস্ট কোড"
+  },
+  "educational_qualification": [
+    {
+      "exam_name": "পরীক্ষার নাম",
+      "board": "বোর্ডের নাম",
+      "institution": "প্রতিষ্ঠানের নাম",
+      "result": "ফলাফল",
+      "certificate_upload": "সার্টিফিকেট আপলোডের জন্য ফাইল"
+    },
+    {
+      "exam_name": "এসএসসি",
+      "board": "বোর্ডের নাম",
+      "institution": "প্রতিষ্ঠানের নাম",
+      "result": "ফলাফল",
+      "certificate_upload": "সার্টিফিকেট আপলোডের জন্য ফাইল"
+    }
+  ],
+  "previous_experience": [
+    {
+      "institution": "প্রতিষ্ঠানের নাম",
+      "designation": "পদবী",
+      "subject": ["বাংলা", "গণিত"],
+      "employment_period": "চাকুরীর সময়কাল"
+    }
+  ],
+  "training_courses": [
+    {
+      "course_name": "ট্রেনিং এর নাম",
+      "course_subject": "ট্রেনিং এর বিষয়",
+      "course_duration": "ট্রেনিং এর সময়কাল",
+      "course_details": "ট্রেনিং সম্পর্কে বিস্তারিত",
+      "certificate_upload": "সার্টিফিকেট আপলোডের জন্য ফাইল"
+    }
+  ],
+  "guardian_info": {
+    "name": "অভিভাবকের নাম",
+    "nid": "অভিভাবকের NID",
+    "profession": "অভিভাবকের পেশা",
+    "relationship": "সন্তানের অভিভাবক",
+    "phone_number": "অভিভাবকের ফোন নাম্বার"
+  },
+  "special_skills": "শিক্ষকের বিশেষ দক্ষতা"
+}

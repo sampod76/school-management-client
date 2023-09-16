@@ -1,0 +1,9 @@
+.profile_menu {
+  width: 100px;
+  height: 40px;
+  background-color: #d5d3d3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: medium;
+}

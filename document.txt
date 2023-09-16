@@ -1,0 +1,13 @@
+set up 
+/***Bayajid***///
+1. ant design installed and fixed tailwind preflight
+command
+   
+   yarn add antd
+
+2. set up tailwnd preflight setting in tailwind.config.js file
+
+   corePlugins: {preflight: false}
+
+
+***Bayajid***
