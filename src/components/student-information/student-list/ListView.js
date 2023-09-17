@@ -1,43 +1,48 @@
 import { AuthContext } from "@/components/Auth/AuthProvider";
 import DeshbordLoading from "@/components/loader/deshbordLoading";
+import { ENUM_CLASS } from "@/const/userConstant";
 import {
   useDeleteStudentMutation,
   useGetStudentsQuery,
 } from "@/redux/features/student/studentApi";
-import { Success_model, confirm_modal } from "@/utils/modalHook";
+import { confirm_modal } from "@/utils/modalHook";
 import { Button, Dropdown, Space, Table, Modal } from "antd";
+import Link from "next/link";
 import { useRouter } from "next/router";
+
 import { useContext, useState } from "react";
+import Swal from "sweetalert2";
+
 const ListView = () => {
   const [open, setOpen] = useState(false);
+  // const [deleteItem, setDeleteItem] = useState();
   const { Error_model } = useContext(AuthContext);
+
   const { data: students, error, isLoading, refetch } = useGetStudentsQuery();
-  const [deleteStudent, { error: deleteError, isLoading: deleteLoading }] =
-    useDeleteStudentMutation();
+  const [
+    deleteStudent,
+    { error: deleteError, isLoading: deleteLoading, isSuccess },
+  ] = useDeleteStudentMutation();
   const router = useRouter();
 
   const handleDelete = (record) => {
-    //setOpen(true)
-    //setDeleteItem(record)
-    confirm_modal("আপনি কি স্টুডেন্টের ডাটা ডিলিট করতে ইচ্ছুক").then(
-      (result) => {
-        if (result.isConfirmed) {
-          deleteStudent(record._id).then((result) => {
-            if (result?.data?.success) {
-              refetch();
-              Success_model({ message: "শিক্ষার্থী সফলভাবে মুছে ফেলা হয়েছে" });
-            } else {
-              Error_model({
-                message:
-                  result?.error?.data?.message || "ভুল হচ্ছে দয়া করে চেক করুন",
-                error: result,
-              });
-              console.log(result);
-            }
-          });
-        }
+    // setOpen(true);
+    // setDeleteItem(record);
+   confirm_modal("আপনি কি স্টুডেন্টের ডাটা ডিলিট করতে ইচ্ছুক").then((result) => {
+      if (result.isConfirmed) {
+        deleteStudent(record._id).then((result) => {
+          if (result?.data?.success) {
+            refetch();
+          } else {
+            Error_model({
+              message: "ভুল হচ্ছে দয়া করে চেক করুন",
+              error: result,
+            });
+            console.log(result);
+          }
+        });
       }
-    );
+    });
   };
 
   if (isLoading || deleteLoading) {
@@ -52,6 +57,7 @@ const ListView = () => {
         students?.error?.data?.message ||
         deleteError?.message,
     });
+ 
   }
 
   const items = [
@@ -70,7 +76,7 @@ const ListView = () => {
     },
   ];
 
-  console.log(students);
+  console.log(students)
   return (
     <>
       <div>

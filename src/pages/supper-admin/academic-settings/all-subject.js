@@ -128,6 +128,7 @@ const AllSubject = () => {
   const handleAddButtonClick = () => {
     setFormVisible(!formVisible);
   };
+  
   return (
     <div className="bg-white rounded-lg shadow p-6">
       <h2 className="text-xl font-semibold mb-4">সকল বিষয়</h2>

@@ -20,14 +20,14 @@ const WorkAssign = () => {
       const formData = await form.validateFields();
       console.log(formData, "ত");
 
-      assignWork({ ...formData, status:"active" }).then((res) => {
-        if (res.data?.success) {
+      assignWork({ ...formData, status:"active" }).then((props) => {
+        if (props.data?.success) {
           toast.success("Work added successfully");
           form.resetFields();
         } else {
-          Error_model({ message: res?.error?.data?.message });
+          Error_model({ message: props?.error?.data?.message });
         }
-        console.log(res);
+        console.log(props);
       });
       // Your code to perform submission logic or API call
     } catch (error) {
