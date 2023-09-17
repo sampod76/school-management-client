@@ -65,9 +65,9 @@ const Supper_admin_dashboard = ({ serverTime }) => {
     return <DeshbordLoading />;
   }
 
-  const totalWorkPlan = allWorkPlanData.data.length;
-  const totalAssignWork = assignedWorkedData.data.length;
-  const totalEvents = eventData.data.length;
+  const totalWorkPlan = allWorkPlanData?.data?.length;
+  const totalAssignWork = assignedWorkedData?.data?.length;
+  const totalEvents = eventData?.data?.length;
 
   const totalIncome = allIncomeData?.data?.reduce((total, income) => {
     return total + parseFloat(income.amount);

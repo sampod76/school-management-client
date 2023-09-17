@@ -1,10 +1,15 @@
 // pages/ClosedAssignment.js
-import React from "react";
+import React, { useContext } from "react";
 import { Table, Checkbox, Space, Dropdown, Menu } from "antd";
 import Link from "next/link";
 import { useDeleteOnlineAssignmentsMutation } from "@/redux/features/onlineAssignments/onlineAssignmentsApi";
-import { confirm_modal } from "@/utils/modalHook";
+import {
+  Error_model_hook,
+  Success_model,
+  confirm_modal,
+} from "@/utils/modalHook";
 import { toast } from "react-toastify";
+import { AuthContext } from "@/components/Auth/AuthProvider";
 
 // const data = [
 //   {
@@ -24,16 +29,20 @@ import { toast } from "react-toastify";
 // ];
 
 const ClosedAssignment = ({ data, refetch }) => {
+  const { setUser, Error_model } = useContext(AuthContext);
   // delete mutations
-  const [deleteOnlineAssignments] = useDeleteOnlineAssignmentsMutation();
+  const [deleteOnlineAssignments, { isLoading, error }] =
+    useDeleteOnlineAssignmentsMutation();
 
   const handleDelete = (id) => {
-    confirm_modal("You want to delete WoRk Plan!").then(async (willDelete) => {
+    confirm_modal("আপনি কি কর্ম পরিকল্পনা ডিলিট করতে চান!").then(async (willDelete) => {
       if (willDelete.value) {
         deleteOnlineAssignments(id).then((props) => {
           if (props.data?.success) {
             refetch();
-            toast.success("Work Plan deleted successfully");
+            Success_model({ message: "সফলভাবে কর্মপরিকল্পনা ডিলেট করা হয়েছে" });
+          } else {
+            Error_model({ message: props?.error?.data?.message });
           }
         });
       }
@@ -140,7 +149,12 @@ const ClosedAssignment = ({ data, refetch }) => {
       <h1 className="text-2xl font-semibold mb-6">
         নিকটবর্তী অ্যাসাইনমেন্ট পেজ
       </h1>
-      <Table columns={columns} dataSource={data} pagination={false} />
+      <Table
+        loading={isLoading}
+        columns={columns}
+        dataSource={data}
+        pagination={false}
+      />
     </div>
   );
 };
