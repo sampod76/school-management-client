@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Dropdown, Menu, Space, Table } from "antd";
 import Link from "next/link";
 import { useDeleteWorkPlanMutation } from "@/redux/features/workPlan/workPlan";
 import { confirm_modal } from "@/utils/modalHook";
 import { toast } from "react-toastify";
+import { AuthContext } from "@/components/Auth/AuthProvider";
 
 // const data = [
 //   {
@@ -30,7 +31,9 @@ import { toast } from "react-toastify";
 
 const UpcomingAssignment = ({ data }) => {
   // delete mutations
-  const [deleteWorkPlan] = useDeleteWorkPlanMutation();
+  const { setUser, Error_model,user } = useContext(AuthContext);
+  
+  const [deleteWorkPlan,{isLoading,error}] = useDeleteWorkPlanMutation();
 
   const handleDelete = (id) => {
     confirm_modal("You want to delete WoRk Plan!").then(async (willDelete) => {

@@ -24,7 +24,7 @@ import { useRouter } from "next/router";
 
 const StudentAddAttendance = () => {
   const { Error_model } = useContext(AuthContext);
-  const router = useRouter()
+  const router = useRouter();
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selectedUserData, setSelectedUserData] = useState([]);
@@ -70,10 +70,6 @@ const StudentAddAttendance = () => {
   //   };
   const hasSelected = selectedRowKeys.length > 0;
 
-  //   if (isLoading || deleteLoading) {
-  //     return <DeshbordLoading />;
-  //   }
-
   const onChange = (key) => {
     console.log(key);
   };
@@ -85,12 +81,7 @@ const StudentAddAttendance = () => {
   };
 
   const handleFilterReset = () => {};
-  if (error) {
-    console.log(error);
-    Error_model({
-      message: error?.message,
-    });
-  }
+
 
   //handle submitted
 
@@ -98,7 +89,7 @@ const StudentAddAttendance = () => {
     const sendData = {
       classInfo: { name: ENUM_CLASS.ONE },
       date: new Date(Date.now()).toISOString(),
-      students:selectedUserData
+      students: selectedUserData,
     };
 
     confirm_modal("আপনি কি হাজিরা জমা দিতে ইচ্ছুক!", "ইচ্ছুক").then(
@@ -108,7 +99,7 @@ const StudentAddAttendance = () => {
             .then((res) => {
               if (res?.data?.success) {
                 Success_model({ message: "শিক্ষার্থীর হাজিরা সম্পন্ন হয়েছে" });
-                router.push(`student-attendance`)
+                router.push(`student-attendance`);
               } else {
                 Error_model({
                   message:
@@ -126,6 +117,17 @@ const StudentAddAttendance = () => {
       }
     );
   };
+
+  if (isLoading) {
+    return <DeshbordLoading />;
+  }
+  
+  if (error) {
+    console.log(error);
+    Error_model({
+      message: error?.error,
+    });
+  }
 
   return (
     <div>
@@ -255,6 +257,7 @@ const StudentAddAttendance = () => {
             dataIndex: "photo",
             key: "_id",
             width: 100,
+            fixed: "left",
             render: (record) => (
               <ImageTag
                 data={{
