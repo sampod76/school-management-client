@@ -12,7 +12,7 @@ const DashboardFooter = () => {
         <div className=" p-4 bg-white">
           <p className="text-xl font-semibold flex items-center ">
             <AiOutlineCopyrightCircle className="me-2"></AiOutlineCopyrightCircle>{" "}
-            Made By Payrasoft.
+            ধন্যবাদ
           </p>
         </div>
       </footer>
